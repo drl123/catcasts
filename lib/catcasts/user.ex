@@ -5,10 +5,11 @@ defmodule Catcasts.User do
 
 
   schema "users" do
-    field :email, :string
-    field :first_name, :string
-    field :last_name, :string
-    field :provider, :string
+    field :email,       :string
+    field :first_name,  :string
+    field :last_name,   :string
+    field :provider,    :string
+    field :token,       :string
 
     timestamps()
   end

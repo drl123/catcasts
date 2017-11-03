@@ -7,6 +7,7 @@ defmodule Catcasts.Repo.Migrations.CreateUsers do
       add :last_name,   :string
       add :email,       :string
       add :provider,    :string
+      add :token,       :string
 
       timestamps()
     end

@@ -1,9 +1,11 @@
 defmodule CatcastsWeb.AuthControllerTest do
   use CatcastsWeb.ConnCase
+  alias Catcasts.Repo
+  alias Catcasts.User
 
   @ueberauth_auth %{credentials: %{token: "fdsnoafhnoofh08h38h"},
     info: %{email: "batman@example.com", first_name: "Bruce", last_name: "Wayne"},
-    provider: :google}
+    provider: "google"}
 
   test "redirects user to Google for authentication", %{conn: conn} do
     conn = get conn, "/auth/google?scope=email%20profile"
@@ -12,8 +14,8 @@ defmodule CatcastsWeb.AuthControllerTest do
 
   test "creates user from Google information", %{conn: conn} do
     conn = conn
-    |> assign(:uberauth_auth, @ueberauth_auth)
-    |> get("/auth/google/callback")
+           |> assign(:ueberauth_auth, @ueberauth_auth)
+           |> get("/auth/google/callback")
 
     users = User |> Repo.all
     assert Enum.count(users) == 1
