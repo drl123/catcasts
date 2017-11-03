@@ -56,3 +56,5 @@ config :catcasts, Catcasts.Repo,
   database: "catcasts_dev",
   hostname: "localhost",
   pool_size: 10
+
+import_config "dev.secret.exs"
