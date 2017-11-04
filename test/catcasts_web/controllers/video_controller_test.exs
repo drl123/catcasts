@@ -22,7 +22,7 @@ defmodule CatcastsWeb.VideoControllerTest do
   describe "new video" do
     test "renders form", %{conn: conn} do
       conn = get conn, video_path(conn, :new)
-      assert html_response(conn, 200) =~ "New Video"
+      assert html_response(conn, 200) =~ "Add a video"
     end
   end
 
@@ -39,33 +39,7 @@ defmodule CatcastsWeb.VideoControllerTest do
 
     test "renders errors when data is invalid", %{conn: conn} do
       conn = post conn, video_path(conn, :create), video: @invalid_attrs
-      assert html_response(conn, 200) =~ "New Video"
-    end
-  end
-
-  describe "edit video" do
-    setup [:create_video]
-
-    test "renders form for editing chosen video", %{conn: conn, video: video} do
-      conn = get conn, video_path(conn, :edit, video)
-      assert html_response(conn, 200) =~ "Edit Video"
-    end
-  end
-
-  describe "update video" do
-    setup [:create_video]
-
-    test "redirects when data is valid", %{conn: conn, video: video} do
-      conn = put conn, video_path(conn, :update, video), video: @update_attrs
-      assert redirected_to(conn) == video_path(conn, :show, video)
-
-      conn = get conn, video_path(conn, :show, video)
-      assert html_response(conn, 200) =~ "some updated duration"
-    end
-
-    test "renders errors when data is invalid", %{conn: conn, video: video} do
-      conn = put conn, video_path(conn, :update, video), video: @invalid_attrs
-      assert html_response(conn, 200) =~ "Edit Video"
+      assert html_response(conn, 200) =~ "Add a video"
     end
   end
 
